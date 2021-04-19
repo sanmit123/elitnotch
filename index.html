@@ -278,7 +278,7 @@
         </h1>
         <p class="u-text u-text-2">We align leaders around a shared purpose and strategic story that catalyzes your business and brand to take action.</p>
         <div class="u-form u-form-1">
-          <form action="https://nicepage.com/editor/Forms/Process" method="POST" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" style="padding: 10px" source="email" name="form">
+          <form class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" style="padding: 10px" source="email" name="form" id="contactForm">
             <input type="hidden" id="siteId" name="siteId" value="335264">
             <input type="hidden" id="pageId" name="pageId" value="335265">
             <div class="u-form-email u-form-group">
@@ -348,16 +348,20 @@
     <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-2692"><div class="u-clearfix u-sheet u-valign-middle-xs u-sheet-1">
         <p class="u-small-text u-text u-text-variant u-text-1">Created with&nbsp;❤️ by ELIT NOTCH</p>
       </div></footer>
-    <section class="u-backlink u-clearfix u-grey-80">
-      <a class="u-link" href="https://nicepage.com/website-mockup" target="_blank">
-        <span>Website Mockup</span>
-      </a>
-      <p class="u-text">
-        <span>created with</span>
-      </p>
-      <a class="u-link" href="https://nicepage.com/html-website-builder" target="_blank">
-        <span>HTML Editor Free</span>
-      </a>. 
-    </section>
+    <script type="text/javascript">
+      $(documeny).ready(function(){
+        $("#contactForm").on('submnit',function(){
+          $.ajax({
+            url:'https://elitnotch.herokuapp.com/contactMail.php',
+            type:"post",
+            data:$("#contactForm").serialize(),
+            success:function(data){
+
+            }
+          })
+          return false
+        })
+      })
+    </script>
   </body>
 </html>
