@@ -5424,7 +5424,8 @@ a {
   margin-right: 0;
 }
 .u-form div.u-form-send-error,
-.u-form div.u-form-send-success {
+.u-form div.u-form-send-success,
+.u-form div.u-form-send-wait {
   display: none;
   position: absolute;
   bottom: 0px;
@@ -5467,6 +5468,9 @@ a {
 }
 .u-form-send-error {
   background: #F95D51;
+}
+.u-form-send-wait {
+  background: #644e82;
 }
 .u-form-send-success {
   background: #62C584;

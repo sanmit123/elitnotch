@@ -15,25 +15,8 @@
     <link rel="icon" href="images/favicon.png">
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i|Barlow:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
     <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Barlow:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <script type="application/ld+json">{
-		"@context": "http://schema.org",
-		"@type": "Organization",
-		"name": "Elitnotch",
-		"url": "index.html",
-		"logo": "images/logo2_150.png"
-}</script>
     <meta property="og:title" content="ElitNotch ">
-    <meta property="og:type" content="website">
+    <meta property="og:type" content="Your Own Tech Partner">
     <meta name="theme-color" content="#29b7dd">
     <link rel="canonical" href="index.html">
     <meta property="og:url" content="index.html">
@@ -278,7 +261,7 @@
         </h1>
         <p class="u-text u-text-2">We align leaders around a shared purpose and strategic story that catalyzes your business and brand to take action.</p>
         <div class="u-form u-form-1">
-          <form class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" style="padding: 10px" source="email" name="form" id="contactForm">
+          <form class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" style="padding: 10px" source="email" id="contactForm" onsubmit="return contactForm()">
             <input type="hidden" id="siteId" name="siteId" value="335264">
             <input type="hidden" id="pageId" name="pageId" value="335265">
             <div class="u-form-email u-form-group">
@@ -302,7 +285,7 @@
               <input type="submit" value="submit" class="u-form-control-hidden">
             </div>
             <div class="u-form-send-message u-form-send-success"> Thank you! Your message has been sent. </div>
-            <div class="u-form-send-error u-form-send-message"> Unable to send your message. Please fix errors then try again. </div>
+            <div class="u-form-send-wait u-form-send-message"> Sending response... </div>
             <input type="hidden" value="" name="recaptchaResponse">
           </form>
         </div>
@@ -350,19 +333,24 @@
       </div></footer>
       <script type="text/javascript" src="jquery-1.9.1.min.js"></script>
     <script type="text/javascript">
-      $(document).ready(function(){
-        $("#contactForm").on('submit',function(){
+        function contactForm(){
           $.ajax({
             url:'https://elitnotch.herokuapp.com/contactMail.php',
+            // url:'http://localhost/eitmail/contactMail.php',
             type:"post",
             data:$("#contactForm").serialize(),
+            beforSend:function(){
+              $(".u-form-send-wait").show()
+            },
             success:function(data){
-
+              $(".u-form-send-wait").hide()
+              $(".u-form-send-success").show()
+              setTimeout(function(){$(".u-form-send-success").hide()},1500)
+              return false
             }
           })
           return false
-        })
-      })
+        }
     </script>
   </body>
 </html>
