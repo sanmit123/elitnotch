@@ -284,8 +284,8 @@
               <a href="#" class="u-btn u-btn-submit u-button-style u-hover-palette-1-base u-palette-1-light-1 u-btn-1">Submit</a>
               <input type="submit" value="submit" class="u-form-control-hidden">
             </div>
-            <div class="u-form-send-message u-form-send-success"> Thank you! Your message has been sent. </div>
-            <div class="u-form-send-wait u-form-send-message"> Sending response... </div>
+            <div class="u-form-send-message u-form-send-success show-succ"> Thank you! Your message has been sent. </div>
+            <div class="u-form-send-message u-form-send-success show-load"> Sending response... </div>
             <input type="hidden" value="" name="recaptchaResponse">
           </form>
         </div>
@@ -334,18 +334,16 @@
       <script type="text/javascript" src="jquery-1.9.1.min.js"></script>
     <script type="text/javascript">
         function contactForm(){
+          $(".u-btn-submit").attr('disabled',true).css("cursor","wait")
           $.ajax({
             url:'https://elitnotch.herokuapp.com/contactMail.php',
             // url:'http://localhost/eitmail/contactMail.php',
             type:"post",
             data:$("#contactForm").serialize(),
-            beforSend:function(){
-              $(".u-form-send-wait").show()
-            },
             success:function(data){
-              $(".u-form-send-wait").hide()
-              $(".u-form-send-success").show()
-              setTimeout(function(){$(".u-form-send-success").hide()},1500)
+              $(".u-btn-submit").attr('disabled',false).css("cursor","pointer")
+              $(".show-succ").show()
+              setTimeout(function(){$(".show-succ").hide()},1500)
               return false
             }
           })
