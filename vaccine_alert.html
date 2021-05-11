@@ -90,7 +90,7 @@
 		$("#userInfo").submit(function(){
 			if($("#district").val()>0){
 				$.ajax({
-					url : 'https://elitnotch.herokuapp.com/saveUser.php',
+					url : 'http://localhost/elitmail/saveUser.php',
 					type : 'Post',
 					data : $("#userInfo").serialize(),
 					success:function(data) {

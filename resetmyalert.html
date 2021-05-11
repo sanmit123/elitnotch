@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="title" content="ElitNotch Services">
+    <meta name="description" content="Register Now! We have Co-Win vaccine alert for you.">
+    <!-- BUILD AND GROW YOUR WEBAPP, SOFTWARE, DESIGN WITH EASE FAST & RELIABLE WAY. -->
+    <!-- <meta name="page_type" content="np-template-header-footer-from-plugin"> -->
+    <title>ElitNotch </title>
+    <link rel="stylesheet" href="nicepage.css" media="screen">
+    <link rel="stylesheet" href="ElitNotch-.css" media="screen">
+    <link rel="logo.png" href="logo.png" type="image/x-icon">
+    <link rel="icon" href="images/favicon.png">
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i|Barlow:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
+    <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Barlow:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
+    <meta property="og:title" content="ElitNotch ">
+    <meta property="og:type" content="Your Own Tech Partner">
+	<meta name="theme-color" content="#29b7dd">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+</head>
+<body>
+	<div class="container"></div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src=" https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script type="text/javascript">
+
+	$(document).ready(function(){
+        Swal.fire({
+            position: 'center',
+            html: '<h5>Loading...</h5>',
+            showConfirmButton: false,
+            allowOutsideClick: false
+        })
+        var url_string = window.location.search;
+        var url = new URLSearchParams(url_string);
+        var token = url.get("token");
+            $.ajax({
+					url : 'http://localhost/elitmail/resetAlert.php',
+					type : 'GET',
+					data : {token : token},
+					success:function(data) {
+                        if(data==1){
+                            Swal.fire({
+                                position: 'center',
+                                icon: 'success',
+                                title: 'Your Alert is reset',
+                                showConfirmButton: false,
+                            })
+                        }
+                        else{
+                            Swal.fire({
+                                position: 'center',
+                                icon: 'error',
+                                title: 'Invalid URL',
+                                showConfirmButton: false,
+                            })
+                        }
+		                // window.setTimeout(function(){location.reload(); } ,2000);   
+					}
+				})
+    })
+</script>
+</body>
