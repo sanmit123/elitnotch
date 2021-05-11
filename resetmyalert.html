@@ -37,7 +37,7 @@
         var url = new URLSearchParams(url_string);
         var token = url.get("token");
             $.ajax({
-					url : 'http://localhost/elitmail/resetAlert.php',
+					url : 'https://elitnotch.herokuapp.com/resetAlert.php',
 					type : 'GET',
 					data : {token : token},
 					success:function(data) {
